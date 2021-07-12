@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
+const userMiddleware = require('./user.middleware');
 
 exports.allowIfLoggedIn = async (req, res, next) => {
   try {
@@ -26,7 +27,14 @@ exports.verifyToken = async (req, res, next) => {
       return res.status(401).json({ error: "JWT token has expired, please login to obtain a new one" });
     }
 
-    res.locals.loggedInUser = await User.findById(userId); next();
+    const user = await User.findById(userId);
+    if (!user.isActivated) {
+      return res.status(401).json({
+        error: "You're account is disabled"
+      });
+    }
+
+    res.locals.loggedInUser = user; next();
   } catch (error) {
      next(error);
     }
@@ -71,12 +79,12 @@ exports.logout = async (req, res) => {
 
 exports.generateAccessToken = (user) => {
   return jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-    expiresIn: 60
+    expiresIn: "2d"
   });
 }
 
 exports.generateRefreshToken = (user) => {
   return jwt.sign({ userId: user._id }, process.env.REFRESH_TOKEN_SECRET, {
-    expiresIn: 120
+    expiresIn: "3d"
   });
 }

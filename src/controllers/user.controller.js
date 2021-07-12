@@ -2,7 +2,6 @@ const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const authMiddleware = require('../middleware/auth.middleware');
 
-const { roles } = require('../roles')
 
 async function hashPassword(password) {
   return await bcrypt.hash(password, 10);
@@ -36,8 +35,13 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) return next(new Error('Email does not exist'));
+    if (!user.isActivated) {
+      return res.status(401).json({
+        error: "You're account is disabled"
+      });
+    }
     const validPassword = await validatePassword(password, user.password);
-    if (!validPassword) return next(new Error('Password is not correct'))
+    if (!validPassword) return next(new Error('Password is not correct'));
     const accessToken = authMiddleware.generateAccessToken(user);
     const refreshToken = authMiddleware.generateRefreshToken(user);
     await User.findByIdAndUpdate(user._id, { accessToken: accessToken, refreshToken: refreshToken });
@@ -60,9 +64,30 @@ exports.getUsers = async (req, res, next) => {
 
 exports.getUser = async (req, res, next) => {
   try {
+    const { email, fullName } = res.locals.loggedInUser;
+    //const userId = req.params.userId;
+    //const user = await User.findById(userId);
+    //if (!user) return next(new Error('User does not exist'));
+    res.status(200).json({
+      data: {
+        "email": email,
+        "fullName": fullName
+      }
+    });
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.updateUser = async (req, res, next) => {
+  try {
+    if (req.body.role === 'user' && req.body.email) {
+      return next(new Error('User not allowed to update email'))
+    }
+
     const userId = req.params.userId;
-    const user = await User.findById(userId);
-    if (!user) return next(new Error('User does not exist'));
+    await User.findByIdAndUpdate(userId, req.body);
+    const user = await User.findById(userId)
     res.status(200).json({
       data: user
     });
