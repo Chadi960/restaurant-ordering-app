@@ -26,7 +26,9 @@ const UserSchema = new Schema({
     default: 'user',
     enum: ["user", "admin"]
   },
+  currentAddress: { type: Schema.Types.ObjectId, ref: 'address'},
   addresses: [{ type: Schema.Types.ObjectId, ref: 'address'}],
+  orders: [{ type: Schema.Types.ObjectId, ref: 'order'}],
   accessToken: {
     type: String
   },

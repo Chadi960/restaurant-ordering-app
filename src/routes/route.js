@@ -5,6 +5,7 @@ const addressController = require('../controllers/address.controller');
 const branchController = require('../controllers/branch.controller');
 const categoryController = require('../controllers/category.controller');
 const itemController = require('../controllers/item.controller');
+const orderController = require('../controllers/order.controller');
 const authMiddleware = require('../middleware/auth.middleware');
 const userMiddleware = require('../middleware/user.middleware');
 
@@ -31,6 +32,7 @@ router.get(
 router.put(
   '/user/:userId',
   authMiddleware.allowIfLoggedIn,
+  userMiddleware.updateValidation,
   userMiddleware.grantAccess('updateAny', 'profile'),
   userController.updateUser
 );
@@ -152,5 +154,31 @@ router.delete(
   userMiddleware.grantAccess('deleteAny', 'item'),
   itemController.deleteItem
 )
+
+// Order
+router.post(
+  '/add-order',
+  authMiddleware.allowIfLoggedIn,
+  userMiddleware.grantAccess('updateAny', 'order'),
+  orderController.addOrder
+);
+router.get(
+  '/orders',
+  authMiddleware.allowIfLoggedIn,
+  userMiddleware.grantAccess('readAny', 'order'),
+  orderController.getOrders,
+);
+router.put(
+  '/update-order/:orderId',
+  authMiddleware.allowIfLoggedIn,
+  userMiddleware.orderValidation,
+  orderController.updateOrder
+),
+router.delete(
+  '/cancel-order/:orderId',
+  authMiddleware.allowIfLoggedIn,
+  userMiddleware.orderCancelValidation,
+  orderController.cancelOrder
+);
 
 module.exports = router;

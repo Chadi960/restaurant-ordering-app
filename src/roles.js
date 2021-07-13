@@ -5,6 +5,9 @@ exports.roles = (function() {
   ac.grant("user")
     .readOwn("profile")
     .updateOwn("profile")
+    .readAny("item")
+    .readOwn("order")
+    .updateOwn("order")
 
   ac.grant("admin")
     .extend("user")
@@ -20,6 +23,9 @@ exports.roles = (function() {
     .readAny("item")
     .updateAny("item")
     .deleteAny("item")
+    .readAny("order")
+    .updateAny("order")
+    .deleteAny("order")
 
   return ac;
 })();

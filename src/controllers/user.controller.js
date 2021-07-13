@@ -2,7 +2,7 @@ const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
 const authMiddleware = require('../middleware/auth.middleware');
 
-
+// it's better to move all business logic to a user service layer but decided to leave them here for now
 async function hashPassword(password) {
   return await bcrypt.hash(password, 10);
 }
@@ -95,10 +95,6 @@ exports.getUserById = async (req, res, next) => {
 
 exports.updateUser = async (req, res, next) => {
   try {
-    if (req.body.role === 'user' && req.body.email) {
-      return next(new Error('User not allowed to update email'))
-    }
-
     const userId = req.params.userId;
     await User.findByIdAndUpdate(userId, req.body);
     const user = await User.findById(userId)
