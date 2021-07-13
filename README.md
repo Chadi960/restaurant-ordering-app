@@ -1,6 +1,6 @@
 # Restaurant-ordering-app
 
-This is a Node.js application that serves as a backend for a restaurant online ordering application, supporting role-based authentication based on JWT with refresh tokens
+This is a Node.js application that serves as a backend for a restaurant online ordering application, supporting role-based authentication based on JWT with refresh tokens. The app is connected to a MongoDB Atlas Cloud database.
 
 There's only "Admin" and "User" roles.
 
