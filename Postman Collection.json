@@ -1,0 +1,958 @@
+{
+	"info": {
+		"_postman_id": "5d6e7835-2e27-4c57-b188-841db18598fc",
+		"name": "Food Ordering App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"joe@gmail.com\",\n    \"fullName\": \"joe\",\n    \"password\": \"1234\",\n    \"role\": \"user\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"joe@gmail.com\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU5YzU3MDUyNzEyYzJlOTc1ZDVkN2QiLCJpYXQiOjE2MjU5OTU3OTUsImV4cCI6MTYyNTk5NTkxNX0.xzHVzjVXLjxoC9cYxpFr8heyM_faP3SaadJ2bkpPAy4\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/refresh-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Log out",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGVhYmNiNGU1YTYwNzUwYWI0M2Y1NTkiLCJpYXQiOjE2MjU5OTY3MTEsImV4cCI6MTYyNTk5NjgzMX0.d8vAAOIFxfDnOxi6EsBZmPuebvKkif916Gzq_E3zNpc\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGVjNTQ5Y2VlYjMwYzFkMjY3NTQ0ZDciLCJpYXQiOjE2MjYxMDA4OTIsImV4cCI6MTYyNjI3MzY5Mn0.1g4YaL7DYMxchoSyZwZ5I_vPYCQ0ZyMeqIa5H73krhM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User By Id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGVjNTQ5Y2VlYjMwYzFkMjY3NTQ0ZDciLCJpYXQiOjE2MjYxMDA4OTIsImV4cCI6MTYyNjI3MzY5Mn0.1g4YaL7DYMxchoSyZwZ5I_vPYCQ0ZyMeqIa5H73krhM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/user/60eb388c7a41573602185129",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"60eb388c7a41573602185129"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwMjgxODgsImV4cCI6MTYyNjIwMDk4OH0.HagYbJzFuTGPyG9C4FyUsXfMXu2fTxOp85wAgXpZxYs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"TEST12\",\n    \"isActivated\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/60eb388c7a41573602185129",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"60eb388c7a41573602185129"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Current User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "Add Address",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"label\": \"home\",\n    \"completeAddress\": \"matn, jdeideh\",\n    \"coordinates\": [\n        33.89050998115993,\n        35.56969642639161\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/add-address",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"add-address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Address",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"completeAddress\": \"matn, zalka\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/update-address/60ec09ec495b7c581a6f32e5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"update-address",
+								"60ec09ec495b7c581a6f32e5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Address",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/delete-address/60ec3130b9c12f034bfb05e3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delete-address",
+								"60ec3130b9c12f034bfb05e3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Addresses",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/my-addresses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"my-addresses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Branch",
+			"item": [
+				{
+					"name": "Add Branch",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"branchName1\",\n    \"coordinates\": [\n        33.89050998115993,\n        35.56969642639161\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/add-branch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"add-branch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Branches",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"branchName1\",\n    \"coordinates\": [\n        33.89050998115993,\n        35.56969642639161\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/branches",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"branches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Branches",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"branchNameTEST\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/update-branch/60ec65f6b172092eb65cf48b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"update-branch",
+								"60ec65f6b172092eb65cf48b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Branch",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/delete-branch/60ec65643db0872dda3e1e3c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delete-branch",
+								"60ec65643db0872dda3e1e3c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Add Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Burgers\",\n    \"type\": \"normal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/add-category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"add-category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"type\": \"normal\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/update-category/sandwich",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"update-category",
+								"sandwich"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/delete-category/sandwich1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delete-category",
+								"sandwich1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Item",
+			"item": [
+				{
+					"name": "Add Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cake\",\n    \"type\": \"dessert\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/add-item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"add-item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Item Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"sandwich2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/add-item-category/60ecac4c71c8a768dcba3837",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"add-item-category",
+								"60ecac4c71c8a768dcba3837"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cake\",\n    \"type\": \"dessert\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/items?limit=3&category=sandwich",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"items"
+							],
+							"query": [
+								{
+									"key": "skip",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "3"
+								},
+								{
+									"key": "category",
+									"value": "sandwich"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Item",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cake\",\n    \"type\": \"dessert\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/delete-item/60ecac5d722a8168fdd0d7f6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delete-item",
+								"60ecac5d722a8168fdd0d7f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Item",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"milk shake\",\n    \"description\": \"strawberry milk shake\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/update-item/60edb6bb4d73525053ccd361",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"update-item",
+								"60edb6bb4d73525053ccd361"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "Add Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"total\": 567,\n    \"note\": \"test order3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/add-order",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"add-order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Order",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGVjNTQ5Y2VlYjMwYzFkMjY3NTQ0ZDciLCJpYXQiOjE2MjYxOTg5NjEsImV4cCI6MTYyNjM3MTc2MX0.3135ZZPsN23hNZEBVYFlxp4MjFVkC2YuRvelEtBF0YE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"status\": \"accept\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/update-order/60edca32ccc67766f7ee5851",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"update-order",
+								"60edca32ccc67766f7ee5851"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Orders",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGViMzg3YTdhNDE1NzM2MDIxODUxMjciLCJpYXQiOjE2MjYwNzY2OTQsImV4cCI6MTYyNjI0OTQ5NH0.tYrfYS1q19GXVHWzocC3VpI_R3lZG66YJKjh5tICq4I",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Orders",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGVjNTQ5Y2VlYjMwYzFkMjY3NTQ0ZDciLCJpYXQiOjE2MjYxOTg5NjEsImV4cCI6MTYyNjM3MTc2MX0.3135ZZPsN23hNZEBVYFlxp4MjFVkC2YuRvelEtBF0YE",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/cancel-order/60edca26ccc67766f7ee584e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cancel-order",
+								"60edca26ccc67766f7ee584e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
