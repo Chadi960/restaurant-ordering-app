@@ -65,13 +65,27 @@ exports.getUsers = async (req, res, next) => {
 exports.getUser = async (req, res, next) => {
   try {
     const { email, fullName } = res.locals.loggedInUser;
-    //const userId = req.params.userId;
-    //const user = await User.findById(userId);
-    //if (!user) return next(new Error('User does not exist'));
+
     res.status(200).json({
       data: {
         "email": email,
         "fullName": fullName
+      }
+    });
+  } catch (error) {
+    next(error)
+  }
+}
+
+exports.getUserById = async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+    const user = await User.findById(userId);
+    if (!user) return next(new Error('User does not exist'));
+    res.status(200).json({
+      data: {
+        "email": user.email,
+        "fullName": user.fullName
       }
     });
   } catch (error) {

@@ -11,6 +11,15 @@ exports.roles = (function() {
     .readAny("profile")
     .updateAny("profile")
     .deleteAny("profile")
+    .readAny("branch")
+    .updateAny("branch")
+    .deleteAny("branch")
+    .readAny("category")
+    .updateAny("category")
+    .deleteAny("category")
+    .readAny("item")
+    .updateAny("item")
+    .deleteAny("item")
 
   return ac;
 })();
